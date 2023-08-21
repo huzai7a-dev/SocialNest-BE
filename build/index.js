@@ -10,12 +10,14 @@ const dotenv_1 = __importDefault(require("dotenv"));
 // Load environment variables from .env file
 dotenv_1.default.config();
 const authRoutes_1 = __importDefault(require("./routes/authRoutes"));
+const feedRoutes_1 = __importDefault(require("./routes/feedRoutes"));
 const app = (0, express_1.default)();
 // Middleware
 app.use((0, morgan_1.default)('dev')); // Logging HTTP requests
 app.use(body_parser_1.default.json());
 // app.use('/feeds', feedRoutes);
 app.use('/auth', authRoutes_1.default);
+app.use('/feeds', feedRoutes_1.default);
 app.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).send('Something broke!');

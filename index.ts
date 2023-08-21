@@ -5,8 +5,9 @@ import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
 // Load environment variables from .env file
 dotenv.config();
-import authRoutes from './routes/authRoutes';
 
+import authRoutes from './routes/authRoutes';
+import feedRoutes from './routes/feedRoutes';
 const app = express();
 
 // Middleware
@@ -15,7 +16,7 @@ app.use(bodyParser.json());
 
 // app.use('/feeds', feedRoutes);
 app.use('/auth', authRoutes);
-
+app.use('/feeds',feedRoutes)
 
 app.use((err:Error, req:Request, res:Response, next:NextFunction):void => {
     console.error(err.stack)
