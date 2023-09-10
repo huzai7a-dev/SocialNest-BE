@@ -1,5 +1,5 @@
 import Joi from 'joi';
-import { SignupRequestBody } from '../interfaces/authInterface';
+import { SignupRequestBody } from '../../interfaces/RequestInterfaces';
 
 
 const signupSchema = Joi.object({

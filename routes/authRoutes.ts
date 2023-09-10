@@ -7,6 +7,6 @@ const upload = multer({ dest: './uploads' });
 const router = Router();
 
 router.post('/signup',upload.any(), handleSignup);
-router.post('/login',handleLogin)
+router.post('/login', handleLogin);
 
 export default router

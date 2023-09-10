@@ -1,7 +1,7 @@
 import { RowDataPacket } from "mysql2";
 
 import { db } from "../../config";
-import { SignupRequestBody } from "../../interfaces/authInterface";
+import { SignupRequestBody } from "../../interfaces/RequestInterfaces";
 
 export const createUser = async({email,full_name,password,profile_image_url}:SignupRequestBody) => {
     const query = 'INSERT INTO users (email, full_name, password, profile_image_url) VALUES (?, ?, ?, ?)';

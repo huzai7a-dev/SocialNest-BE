@@ -1,9 +1,9 @@
 import { Request, Response } from "express";
 
-import { SignupRequestBody } from "../interfaces/authInterface";
-import { validateLogin, validateSignup } from "../validations/authValidations";
+import { validateLogin, validateSignup } from "../utils/validations/authValidations";
 import { comparePpassword, encryptPassword, getToken, uploadImage } from "../utils";
 import { createUser, searchUserByEmail } from "../utils/dbUtils/users";
+import { SignupRequestBody } from "../interfaces/RequestInterfaces";
 
 const handleSignup = async (req: Request, res: Response) => {
     const { error } = validateSignup(req.body as SignupRequestBody);

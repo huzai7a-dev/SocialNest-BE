@@ -1,10 +1,10 @@
 import {Router} from "express";
-import { handleGetFeeds } from "../controllers/feedsControllers";
+import { handleCreateFeed, handleGetFeeds } from "../controllers/feedsControllers";
 import authMiddleware from "../middlewares/authMiddleware";
 
 const router = Router();
 
 router.get('/',[authMiddleware], handleGetFeeds);
-// router.post('/', addFeed);
+router.post('/',[authMiddleware],handleCreateFeed);
 
 export default router;
