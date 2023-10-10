@@ -1,5 +1,6 @@
 
 import express, { Request, Response, NextFunction } from 'express';
+import mongoose from 'mongoose';
 import morgan from "morgan";
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
@@ -16,12 +17,19 @@ app.use(bodyParser.json());
 
 // app.use('/feeds', feedRoutes);
 app.use('/auth', authRoutes);
-app.use('/feeds',feedRoutes)
+app.use('/feeds', feedRoutes)
 
-app.use((err:Error, req:Request, res:Response, next:NextFunction):void => {
+app.use((err: Error, req: Request, res: Response, next: NextFunction): void => {
     console.error(err.stack)
     res.status(500).send('Something broke!')
 })
+
+mongoose.connect(process.env.db_conn_string!)
+    .then(() => {
+        console.log('connected to db');
+    }).catch((err) => {
+        console.log(err)
+    })
 
 const port = process.env.PORT || 5000
 app.listen(port, () => {

@@ -1,12 +1,17 @@
 import Joi from 'joi';
-import { SignupRequestBody } from '../../interfaces/RequestInterfaces';
+import { SignupRequestBody } from '../interfaces/RequestInterfaces';
 
 
 const signupSchema = Joi.object({
-    full_name: Joi.string().min(3).max(355).required(),
+    firstName: Joi.string().min(3).max(255).required(),
+    lastName: Joi.string().min(3).max(255).required(),
     email: Joi.string().email().required(),
     password: Joi.string().min(8).max(255).required(),
-    profile_image: Joi.any()
+    profile_image: Joi.any(),
+    bio: Joi.string(),
+    city: Joi.string(),
+    country: Joi.string(),
+    isVerified: Joi.boolean()
 });
 
 

@@ -1,7 +1,8 @@
 import { JwtResponse } from "./ResponseInterfaces";
 
 export interface SignupRequestBody {
-    full_name: string,
+    firstName: string,
+    lastName: string
     email: string,
     password: string,
     profile_image_url?:string,
@@ -10,5 +11,4 @@ export interface SignupRequestBody {
 export interface FeedRequestBody {
     caption: string,
     user: JwtResponse,
-    post_media?:string
 }
