@@ -4,6 +4,9 @@ import mongoose from 'mongoose';
 import morgan from "morgan";
 import bodyParser from 'body-parser';
 import dotenv from 'dotenv';
+import swaggerUi from "swagger-ui-express";
+import swaggerSpec from "./config/swagger";
+
 // Load environment variables from .env file
 dotenv.config();
 
@@ -14,6 +17,7 @@ const app = express();
 // Middleware
 app.use(morgan('dev')); // Logging HTTP requests
 app.use(bodyParser.json());
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // app.use('/feeds', feedRoutes);
 app.use('/auth', authRoutes);

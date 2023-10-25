@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 
+
 const feedSchema = new mongoose.Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
@@ -18,6 +19,12 @@ const feedSchema = new mongoose.Schema({
         type: Number,
         default: 0,
     },
+    likes: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User",
+        },
+    ],
     commentsCount: {
         type: Number,
         default: 0,
